@@ -35,39 +35,50 @@ function check_adjacency(y::Array{Int64,2})
         return true
     end
 end
-        
-function is_connected(matrix::Array{Int64,2})
-    n = size(matrix, 1)
-    visited = zeros(Bool, n)
-    stack = [1]  # Start from node 1 (can be any node)
-    visited[1] = true
+      
+# verifying connexity 
+function is_connected(y::Array{Int64,2})
+    n = size(y,1)
+    need_tobe_visited_nodes = []
+    visited_nodes = Set{Tuple{Int64,Int64}}()
 
-    # Perform depth-first search
-    while !isempty(stack)
-        node = pop!(stack)
-        for i in 1:n
-            if matrix[node, i] == 1 && !visited[i]
-                push!(stack, i)
-                visited[i] = true
-            end
+    i,j = Tuple(findfirst(y .!= 0)) # find the first 1 of the matrix
+
+    # add the node to be visited
+
+    push!(need_tobe_visited_nodes,(i,j))
+
+    #dfs algorithm
+    while !isempty(need_tobe_visited_nodes) #while we still have nodes to be visited
+        node = pop!(need_tobe_visited_nodes) # starts by the first node
+        if !(node in visited_nodes) # if the node is not yet visited
+            push!(visited_nodes,node) # we add it to the visited ones
+            push_neighbors(node,y,need_tobe_visited_nodes) # we add its neighbors to be visited
         end
     end
 
-    # Check if all nodes are visited
-    return all(visited)
+    return length(visited_nodes)==sum(y .!= 0) # check if the visited nodes are all the nodes different than 0 in the matrix
+
 end
 
-function matrix_to_graph(matrix::Array{Int64,2})
-    n = size(matrix, 1)
-    graph = SimpleGraph(n)
+function push_neighbors(node::Tuple{Int,Int}, y :: Array{Int64,2},neighbors_list)
+    n = size(y,1)
+    i,j = node
 
-    for i in 1:n
-        for j in i+1:n
-            if matrix[i, j] == 1
-                add_edge!(graph, i, j)
-            end
-        end
+    if i > 1 && y[i-1,j] == 1 # upper neighbor
+        push!(neighbors_list,(i-1,j))
+    end
+    
+    if i < n && y[i+1,j] == 1 #lower neighbor
+        push!(neighbors_list,(i+1,j))
     end
 
-    return graph
+    if j > 1 && y[i,j-1] == 1 #left neighbor
+        push!(neighbors_list,(i,j-1))
+    end
+
+    if j < n && y[i,j+1] == 1 # right neighbor
+        push!(neighbors_list,(i,j+1))
+    end
 end
+
