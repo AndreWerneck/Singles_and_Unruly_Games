@@ -36,13 +36,15 @@ function check_adjacency(y::Array{Int64,2})
     end
 end
       
+# when a cell value = 1 -> this cell is masked 
+# so we need to see if the nodes that are equal to 0 are connected
 # verifying connexity 
 function is_connected(y::Array{Int64,2})
     n = size(y,1)
     need_tobe_visited_nodes = []
     visited_nodes = Set{Tuple{Int64,Int64}}()
 
-    i,j = Tuple(findfirst(y .!= 0)) # find the first 1 of the matrix
+    i,j = Tuple(findfirst(y .!= 1)) # find the first 0 of the matrix
 
     # add the node to be visited
 
@@ -57,7 +59,7 @@ function is_connected(y::Array{Int64,2})
         end
     end
 
-    return length(visited_nodes)==sum(y .!= 0) # check if the visited nodes are all the nodes different than 0 in the matrix
+    return length(visited_nodes)==sum(y .!= 1) # check if the visited nodes are all the nodes different than 1 in the matrix
 
 end
 
@@ -65,19 +67,19 @@ function push_neighbors(node::Tuple{Int,Int}, y :: Array{Int64,2},neighbors_list
     n = size(y,1)
     i,j = node
 
-    if i > 1 && y[i-1,j] == 1 # upper neighbor
+    if i > 1 && y[i-1,j] == 0 # upper neighbor
         push!(neighbors_list,(i-1,j))
     end
     
-    if i < n && y[i+1,j] == 1 #lower neighbor
+    if i < n && y[i+1,j] == 0 #lower neighbor
         push!(neighbors_list,(i+1,j))
     end
 
-    if j > 1 && y[i,j-1] == 1 #left neighbor
+    if j > 1 && y[i,j-1] == 0 #left neighbor
         push!(neighbors_list,(i,j-1))
     end
 
-    if j < n && y[i,j+1] == 1 # right neighbor
+    if j < n && y[i,j+1] == 0 # right neighbor
         push!(neighbors_list,(i,j+1))
     end
 end
