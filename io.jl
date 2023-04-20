@@ -79,7 +79,30 @@ function displayGrid(t::Matrix{Int64})
 
 end
 
-# ------------------------------------------
-# TODO : Implement Display Solution function
-# ------------------------------------------
+function displaySolution(t::Array{Int64,2},y::Array{Int64,2})
+
+    dim = size(t,1)
+
+    # Display the upper border of the grid
+    println(" ", "---"^(dim))
+
+    for i in 1:dim
+        print("|")
+        for j in 1:dim
+
+            if y[i,j] == 1
+                print(" \u25A0 ")
+            else 
+                print(" $(t[i,j]) ")
+            end
+
+        end
+        print("|")
+        print("\n")
+    end
+
+    # Display the lower border of the grid
+    println(" ", "---"^(dim))
+
+end
 

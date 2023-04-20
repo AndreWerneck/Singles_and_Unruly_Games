@@ -1,0 +1,72 @@
+SOLVEREC (t MATRIX, linha, col)
+    if linha == n && col == n:
+        return true
+    
+    if esta pintado (linha col):
+        return SOLVEREC (linha, col + 1) / SOLVEREC (linha + 1, 0)
+    
+    elem = t[linha][col]
+    lista = dic_rep[elem]
+
+    if (tam lista == 1)
+        RETURN SOLVEREC(linha, col + 1) / SOLVEREC(linha + 1, 0)
+
+    for elem in lista
+        pintar todos
+        despintar elem
+        
+        if nao deu pau:
+            deu_BOM = SOLVEREC(linha, col + 1) / SOLVEREC(linha + 1, 0)
+            if (NOT DEU_BOM)
+                despintar todos
+            if (DEU_BOM)
+                return True
+        else
+            despintar todos
+
+    return false
+
+OBSERVACAO lista representa todos as posicoes da linha que sao iguais a elem
+MAS na hora de pintar todos (pintar tambem repetidos na coluna)
+
+SOLVEREC (0,0) 
+    elem = 3
+    lista = [0, 1, 4]
+    col = 1
+    
+SOLVEREC (0, 1)
+SOLVEREC (0, 2)
+    elem = 2
+    lista = [2, 3]
+    col = 3
+SOLVEREC (0,3)
+SOLVEREC (0,4)
+SOLVEREC (1,0)
+SOLVEREC (1,1)
+SOLVEREC (1,2)
+SOLVEREC (1,3)
+SOLVEREC (1,4)
+SOLVEREC (2,0)
+    elem = 3
+    lista = 0,2
+    col = 0
+SOLVEREC (2,1) 
+    elem = 1
+    lista = 1,4
+    col = 1
+SOLVEREC (2, 2)
+SOLVEREC (2, 3)
+SOLVEREC (3, 0)
+    elem = 5
+    lista = 0,1
+    col = 0
+SOLVEREC (4,0)
+    elem = 5
+    lista = 0,2
+    col = 0
+SOLVEREC (4,3)
+    elem = 3
+    lista = 3,4
+    col = 3
+
+
