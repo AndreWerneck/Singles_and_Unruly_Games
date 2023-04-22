@@ -280,7 +280,9 @@ function solveDataSet()
 
     # Array which contains the name of the resolution methods
     # resolutionMethod = ["cplex"]
-    resolutionMethod = ["cplex", "heuristique"]
+    # resolutionMethod = ["cplex", "heuristique"]
+    resolutionMethod = ["heuristique"]
+
 
     # Array which contains the result folder of each resolution method
     resolutionFolder = resFolder .* resolutionMethod
