@@ -5,10 +5,12 @@ include("generation.jl")
 
 TOL = 0.00001
 
+START_COUNT = 0
+
 """
 Heuristically solve an instance
 """
-function heuristicSolve(t::Array{Int64,2})
+function heuristicSolve(t::Array{Int64,2},start_time,time_limit)
 
     n = size(t,1)
 
@@ -22,7 +24,7 @@ function heuristicSolve(t::Array{Int64,2})
         end
     end
 
-    solved = solverec(t,y,1,1)
+    solved = solverec(t,y,1,1,start_time,time_limit)
 
     if((solved == true) && (check_repeated_values(x,y) == true))
         # displaySolution(t,y)
@@ -33,115 +35,122 @@ function heuristicSolve(t::Array{Int64,2})
     end
 end
 
-function solverec(board::Array{Int64,2},y::Array{Int64,2} ,line :: Int64, col :: Int64)
+function solverec(board::Array{Int64,2},y::Array{Int64,2} ,line :: Int64, col :: Int64,start_time,time_limit)
+    
+    exec_time = time()
+
     # creates a copy of the original board
     t = copy(board)
 
     n = size(t,1)
 
-    if (line == n) && (col == n)
-        return true
-    end
-
-    # if it is already marked
-    if t[line,col] == 0
-        #goes to next number in line or goes to first number of next line    
-        if (col + 1) > n
-            return (solverec(t,y,(line + 1), 1))
-        else
-            return (solverec(t,y,line, (col + 1)))
-        end  
-    end
-
-    element = t[line,col]
-    rep_inline_list = findall(x->x === element,t[line,:])
-    rep_incol_list = findall(x->x === element, t[:,col])
-
-    if ( (length(rep_inline_list) == 1) && (length(rep_incol_list) == 1) )
-        #goes to next number in line or goes to first number of next line
-        if (col + 1) > n
-            return (solverec(t,y,(line + 1), 1))
-        else
-            return (solverec(t,y,line, (col + 1)))
+    if ( (exec_time - start_time) < time_limit )
+        if (line == n) && (col == n)
+            return true
         end
-    end
 
-    if length(rep_inline_list)>1
-        for elem_col in rep_inline_list
-            # mark all the repeated elements in line and column excpet the one in [line,col]
-            # marks also at the solution binary matrix
-            mark_elements(t,y,line,elem_col,element)
+        # if it is already marked
+        if t[line,col] == 0
+            #goes to next number in line or goes to first number of next line    
+            if (col + 1) > n
+                return (solverec(t,y,(line + 1), 1,start_time,time_limit))
+            else
+                return (solverec(t,y,line, (col + 1),start_time,time_limit))
+            end  
+        end
 
-            #check the adjacency
-            adjacency_ok = check_adjacency(y)
+        element = t[line,col]
+        rep_inline_list = findall(x->x === element,t[line,:])
+        rep_incol_list = findall(x->x === element, t[:,col])
 
-            #check connexity
-            connexity_ok = is_connected(y)
+        if ( (length(rep_inline_list) == 1) && (length(rep_incol_list) == 1) )
+            #goes to next number in line or goes to first number of next line
+            if (col + 1) > n
+                return (solverec(t,y,(line + 1), 1,start_time,time_limit))
+            else
+                return (solverec(t,y,line, (col + 1),start_time,time_limit))
+            end
+        end
 
-            if( (adjacency_ok == true) && (connexity_ok == true) )
-                #goes to next number in line or goes to first number of next line
-                if (col+1)>n
-                    is_good_solution = solverec(t,y,line + 1,1)
+        if length(rep_inline_list)>1
+            for elem_col in rep_inline_list
+                # mark all the repeated elements in line and column excpet the one in [line,col]
+                # marks also at the solution binary matrix
+                mark_elements(t,y,line,elem_col,element)
+
+                #check the adjacency
+                adjacency_ok = check_adjacency(y)
+
+                #check connexity
+                connexity_ok = is_connected(y)
+
+                if( (adjacency_ok == true) && (connexity_ok == true) )
+                    #goes to next number in line or goes to first number of next line
+                    if (col+1)>n
+                        is_good_solution = solverec(t,y,line + 1,1,start_time,time_limit)
+                    else
+                        is_good_solution = solverec(t,y,line,col+1,start_time,time_limit)
+                    end
+                    
+                    if (is_good_solution == false)
+                        restore_elements(board,t,y,line,elem_col,element)
+                    end
+
+                    if(is_good_solution==true)
+                        return true
+                    end
+
                 else
-                    is_good_solution = solverec(t,y,line,col+1)
-                end
-                
-                if (is_good_solution == false)
                     restore_elements(board,t,y,line,elem_col,element)
                 end
 
-                if(is_good_solution==true)
-                    return true
-                end
-
-            else
-                restore_elements(board,t,y,line,elem_col,element)
             end
-
         end
-    end
 
 
-    if length(rep_incol_list)>1
-        for elem_line in rep_incol_list
-            # mark all the repeated elements in line and column excpet the one in [line,col]
-            # marks also at the solution binary matrix
-            mark_elements(t,y,elem_line,col,element)
+        if length(rep_incol_list)>1
+            for elem_line in rep_incol_list
+                # mark all the repeated elements in line and column excpet the one in [line,col]
+                # marks also at the solution binary matrix
+                mark_elements(t,y,elem_line,col,element)
 
-            #check the adjacency
-            adjacency_ok = check_adjacency(y)
+                #check the adjacency
+                adjacency_ok = check_adjacency(y)
 
-            #check connexity
-            connexity_ok = is_connected(y)
+                #check connexity
+                connexity_ok = is_connected(y)
 
-            #check repeated values
-            # repeated_values_ok = check_repeated_values(x,y)
+                #check repeated values
+                # repeated_values_ok = check_repeated_values(x,y)
 
 
-            if( (adjacency_ok == true) && (connexity_ok == true) )
-                #goes to next number in line or goes to first number of next line
-                if (col+1)>n
-                    is_good_solution = solverec(t,y,line + 1,1)
+                if( (adjacency_ok == true) && (connexity_ok == true) )
+                    #goes to next number in line or goes to first number of next line
+                    if (col+1)>n
+                        is_good_solution = solverec(t,y,line + 1,1,start_time,time_limit)
+                    else
+                        is_good_solution = solverec(t,y,line,col+1,start_time,time_limit)
+                    end
+                    
+                    if (is_good_solution == false)
+                        restore_elements(board,t,y,elem_line,col,element)
+                    end
+
+                    if(is_good_solution==true)
+                        return true
+                    end
+
                 else
-                    is_good_solution = solverec(t,y,line,col+1)
-                end
-                
-                if (is_good_solution == false)
                     restore_elements(board,t,y,elem_line,col,element)
                 end
 
-                if(is_good_solution==true)
-                    return true
-                end
-
-            else
-                restore_elements(board,t,y,elem_line,col,element)
             end
-
         end
-    end
 
-    return false
+        return false
+    else
+        return false
+    end
 
 end
 
@@ -325,17 +334,18 @@ function solveDataSet()
 
                     # Start a chronometer 
                     startingTime = time()
+                    time_limit = 200
                     
                     # While the grid is not solved and less than 100 seconds are elapsed
-                    while !isOptimal && resolutionTime < 100
-                        
-                        # Solve it and get the results
-                        isOptimal, solution = heuristicSolve(t)
+                    # while !isOptimal && resolutionTime < time_limit
+                    
+                    # Solve it and get the results
+                    isOptimal, solution = heuristicSolve(t,startingTime,time_limit)
 
-                        # Stop the chronometer
-                        resolutionTime = time() - startingTime
+                    # Stop the chronometer
+                    resolutionTime = time() - startingTime
                         
-                    end
+                    # end
 
                     # Write the solution (if any)
                     if isOptimal

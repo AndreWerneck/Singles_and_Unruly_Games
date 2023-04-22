@@ -1,0 +1,388 @@
+\documentclass{article}
+
+\usepackage[french]{babel}
+\usepackage [utf8] {inputenc} % utf-8 / latin1 
+\usepackage{multicol}
+
+\setlength{\hoffset}{-18pt}
+\setlength{\oddsidemargin}{0pt} % Marge gauche sur pages impaires
+\setlength{\evensidemargin}{9pt} % Marge gauche sur pages paires
+\setlength{\marginparwidth}{54pt} % Largeur de note dans la marge
+\setlength{\textwidth}{481pt} % Largeur de la zone de texte (17cm)
+\setlength{\voffset}{-18pt} % Bon pour DOS
+\setlength{\marginparsep}{7pt} % Séparation de la marge
+\setlength{\topmargin}{0pt} % Pas de marge en haut
+\setlength{\headheight}{13pt} % Haut de page
+\setlength{\headsep}{10pt} % Entre le haut de page et le texte
+\setlength{\footskip}{27pt} % Bas de page + séparation
+\setlength{\textheight}{668pt} % Hauteur de la zone de texte (25cm)
+
+\begin{document}
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instanceTest1.txt & 4.71 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instanceTest2.txt & 0.02 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instanceTest3.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_1.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_2.txt & 0.02 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.25\_3.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_4.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_5.txt & 0.02 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t10\_d0.2\_1.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_2.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_3.txt & 0.03 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.2\_4.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_5.txt & 0.04 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.3\_1.txt & 0.14 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.3\_2.txt & 0.02 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t10\_d0.3\_3.txt & 0.02 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t10\_d0.3\_4.txt & 0.18 & 
+$\times$
+ & 0.25 & 
+$\times$
+\\
+instance\_t10\_d0.3\_5.txt & 0.07 & 
+$\times$
+ & 0.05 & 
+$\times$
+\\
+instance\_t12\_d0.25\_1.txt & 0.06 & 
+$\times$
+ & 5.48 & 
+$\times$
+\\
+instance\_t12\_d0.25\_2.txt & 0.02 & 
+$\times$
+ & 0.94 & 
+$\times$
+\\
+instance\_t12\_d0.25\_3.txt & 0.03 & 
+$\times$
+ & 2.48 & 
+$\times$
+\\
+instance\_t12\_d0.25\_4.txt & 0.03 & 
+$\times$
+ & 1.34 & 
+$\times$
+\\
+instance\_t12\_d0.25\_5.txt & 0.03 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t12\_d0.2\_1.txt & 0.03 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t12\_d0.2\_2.txt & 0.02 & 
+$\times$
+ & 0.05 & 
+$\times$
+\\
+instance\_t12\_d0.2\_3.txt & 0.03 & 
+$\times$
+ & 0.08 & 
+$\times$
+\\
+instance\_t12\_d0.2\_4.txt & 0.02 & 
+$\times$
+ & 0.04 & 
+$\times$
+\\
+instance\_t12\_d0.2\_5.txt & 0.07 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t12\_d0.3\_1.txt & 0.03 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t12\_d0.3\_2.txt & 0.03 & 
+$\times$
+ & 0.45 & 
+$\times$
+\\
+instance\_t12\_d0.3\_3.txt & 0.02 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t12\_d0.3\_4.txt & 0.05 & 
+$\times$
+ & 0.4 & 
+$\times$
+\\
+instance\_t12\_d0.3\_5.txt & 0.02 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t14\_d0.25\_1.txt & 0.02 & 
+$\times$
+ & - & - 
+\\
+instanceTest1.txt & 4.71 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instanceTest2.txt & 0.02 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instanceTest3.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_1.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_2.txt & 0.02 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.25\_3.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_4.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.25\_5.txt & 0.02 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t10\_d0.2\_1.txt & 0.02 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_2.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_3.txt & 0.03 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.2\_4.txt & 0.03 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.2\_5.txt & 0.04 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.3\_1.txt & 0.14 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t10\_d0.3\_2.txt & 0.02 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t10\_d0.3\_3.txt & 0.02 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t10\_d0.3\_4.txt & 0.18 & 
+$\times$
+ & 0.25 & 
+$\times$
+\\
+instance\_t10\_d0.3\_5.txt & 0.07 & 
+$\times$
+ & 0.05 & 
+$\times$
+\\
+instance\_t12\_d0.25\_1.txt & 0.06 & 
+$\times$
+ & 5.48 & 
+$\times$
+\\
+instance\_t12\_d0.25\_2.txt & 0.02 & 
+$\times$
+ & 0.94 & 
+$\times$
+\\
+instance\_t12\_d0.25\_3.txt & 0.03 & 
+$\times$
+ & 2.48 & 
+$\times$
+\\
+instance\_t12\_d0.25\_4.txt & 0.03 & 
+$\times$
+ & 1.34 & 
+$\times$
+\\
+instance\_t12\_d0.25\_5.txt & 0.03 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t12\_d0.2\_1.txt & 0.03 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t12\_d0.2\_2.txt & 0.02 & 
+$\times$
+ & 0.05 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t12\_d0.2\_3.txt & 0.03 & 
+$\times$
+ & 0.08 & 
+$\times$
+\\
+instance\_t12\_d0.2\_4.txt & 0.02 & 
+$\times$
+ & 0.04 & 
+$\times$
+\\
+instance\_t12\_d0.2\_5.txt & 0.07 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t12\_d0.3\_1.txt & 0.03 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t12\_d0.3\_2.txt & 0.03 & 
+$\times$
+ & 0.45 & 
+$\times$
+\\
+instance\_t12\_d0.3\_3.txt & 0.02 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t12\_d0.3\_4.txt & 0.05 & 
+$\times$
+ & 0.4 & 
+$\times$
+\\
+instance\_t12\_d0.3\_5.txt & 0.02 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+
+\end{document}
