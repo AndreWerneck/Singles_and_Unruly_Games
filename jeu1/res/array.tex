@@ -1,0 +1,1298 @@
+\documentclass{article}
+
+\usepackage[french]{babel}
+\usepackage [utf8] {inputenc} % utf-8 / latin1 
+\usepackage{multicol}
+
+\setlength{\hoffset}{-18pt}
+\setlength{\oddsidemargin}{0pt} % Marge gauche sur pages impaires
+\setlength{\evensidemargin}{9pt} % Marge gauche sur pages paires
+\setlength{\marginparwidth}{54pt} % Largeur de note dans la marge
+\setlength{\textwidth}{481pt} % Largeur de la zone de texte (17cm)
+\setlength{\voffset}{-18pt} % Bon pour DOS
+\setlength{\marginparsep}{7pt} % Séparation de la marge
+\setlength{\topmargin}{0pt} % Pas de marge en haut
+\setlength{\headheight}{13pt} % Haut de page
+\setlength{\headsep}{10pt} % Entre le haut de page et le texte
+\setlength{\footskip}{27pt} % Bas de page + séparation
+\setlength{\textheight}{668pt} % Hauteur de la zone de texte (25cm)
+
+\begin{document}
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t10\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_5.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_1.txt & 0.0 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_5.txt & 0.0 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.3\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_7.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t14\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.21 & 
+$\times$
+\\
+instance\_t14\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 1.54 & 
+$\times$
+\\
+instance\_t14\_d0.1\_2.txt & 0.01 & 
+$\times$
+ & 0.54 & 
+$\times$
+\\
+instance\_t14\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.18 & 
+$\times$
+\\
+instance\_t14\_d0.1\_4.txt & 0.02 & 
+$\times$
+ & 0.85 & 
+$\times$
+\\
+instance\_t14\_d0.1\_5.txt & 0.02 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t14\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t14\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t14\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 1.46 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t14\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.5 & 
+$\times$
+\\
+instance\_t14\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t14\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t14\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t14\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t14\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.81 & 
+$\times$
+\\
+instance\_t14\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 0.12 & 
+$\times$
+\\
+instance\_t14\_d0.3\_6.txt & 0.01 & 
+$\times$
+ & 0.1 & 
+$\times$
+\\
+instance\_t14\_d0.3\_7.txt & 0.02 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t14\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.09 & 
+$\times$
+\\
+instance\_t14\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t16\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.32 & 
+$\times$
+\\
+instance\_t16\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 16.51 & 
+$\times$
+\\
+instance\_t16\_d0.1\_2.txt & 0.01 & 
+$\times$
+ & 5.01 & 
+$\times$
+\\
+instance\_t16\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 4.56 & 
+$\times$
+\\
+instance\_t16\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t16\_d0.1\_5.txt & 0.02 & 
+$\times$
+ & 0.79 & 
+$\times$
+\\
+instance\_t16\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 5.2 & 
+$\times$
+\\
+instance\_t16\_d0.1\_7.txt & 0.02 & 
+$\times$
+ & 2.18 & 
+$\times$
+\\
+instance\_t16\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 0.52 & 
+$\times$
+\\
+instance\_t16\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.95 & 
+$\times$
+\\
+instance\_t16\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 0.14 & 
+$\times$
+\\
+instance\_t16\_d0.3\_10.txt & 0.02 & 
+$\times$
+ & 0.8 & 
+$\times$
+\\
+instance\_t16\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 0.65 & 
+$\times$
+\\
+instance\_t16\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 19.05 & 
+$\times$
+\\
+instance\_t16\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.47 & 
+$\times$
+\\
+instance\_t16\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 0.51 & 
+$\times$
+\\
+instance\_t16\_d0.3\_6.txt & 0.01 & 
+$\times$
+ & 0.22 & 
+$\times$
+\\
+instance\_t16\_d0.3\_7.txt & 0.02 & 
+$\times$
+ & 3.69 & 
+$\times$
+\\
+instance\_t16\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.76 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t16\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.46 & 
+$\times$
+\\
+instance\_t18\_d0.1\_1.txt & 0.03 & 
+$\times$
+ & 28.6 & 
+$\times$
+\\
+instance\_t18\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 26.29 & 
+$\times$
+\\
+instance\_t18\_d0.1\_2.txt & 0.03 & 
+$\times$
+ & 65.01 & 
+$\times$
+\\
+instance\_t18\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 47.19 & 
+$\times$
+\\
+instance\_t18\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 23.61 & 
+$\times$
+\\
+instance\_t18\_d0.1\_5.txt & 0.01 & 
+$\times$
+ & 25.76 & 
+$\times$
+\\
+instance\_t18\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 75.98 & 
+$\times$
+\\
+instance\_t18\_d0.1\_7.txt & 0.02 & 
+$\times$
+ & 23.94 & 
+$\times$
+\\
+instance\_t18\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 10.97 & 
+$\times$
+\\
+instance\_t18\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.75 & 
+$\times$
+\\
+instance\_t18\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 1.32 & 
+$\times$
+\\
+instance\_t18\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 1.57 & 
+$\times$
+\\
+instance\_t18\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 1.37 & 
+$\times$
+\\
+instance\_t18\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 1.23 & 
+$\times$
+\\
+instance\_t18\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 4.99 & 
+$\times$
+\\
+instance\_t18\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 8.53 & 
+$\times$
+\\
+instance\_t18\_d0.3\_6.txt & 0.02 & 
+$\times$
+ & 6.13 & 
+$\times$
+\\
+instance\_t18\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 3.01 & 
+$\times$
+\\
+instance\_t18\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 16.2 & 
+$\times$
+\\
+instance\_t18\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 5.54 & 
+$\times$
+\\
+instance\_t20\_d0.1\_1.txt & 0.03 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_10.txt & 0.02 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_2.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_3.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_4.txt & 0.03 & 
+$\times$
+ & 54.99 & 
+$\times$
+\\
+instance\_t20\_d0.1\_5.txt & 0.04 & 
+$\times$
+ & 100.02 & 
+\\
+instance\_t20\_d0.1\_6.txt & 0.04 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_7.txt & 0.03 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_8.txt & 0.03 & 
+$\times$
+ & 100.01 & 
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t20\_d0.1\_9.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.3\_1.txt & 0.02 & 
+$\times$
+ & 35.22 & 
+$\times$
+\\
+instance\_t20\_d0.3\_10.txt & 0.03 & 
+$\times$
+ & 22.02 & 
+$\times$
+\\
+instance\_t20\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.3\_3.txt & 0.03 & 
+$\times$
+ & 8.42 & 
+$\times$
+\\
+instance\_t20\_d0.3\_4.txt & 0.02 & 
+$\times$
+ & 90.59 & 
+$\times$
+\\
+instance\_t20\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 37.48 & 
+$\times$
+\\
+instance\_t20\_d0.3\_6.txt & 0.02 & 
+$\times$
+ & 70.07 & 
+$\times$
+\\
+instance\_t20\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 20.43 & 
+$\times$
+\\
+instance\_t20\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 12.38 & 
+$\times$
+\\
+instance\_t8\_d0.1\_1.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_10.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_4.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_5.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_8.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_9.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_1.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_10.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_4.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_5.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t8\_d0.3\_9.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_5.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_1.txt & 0.0 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_5.txt & 0.0 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t10\_d0.3\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_7.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t10\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t14\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.21 & 
+$\times$
+\\
+instance\_t14\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 1.54 & 
+$\times$
+\\
+instance\_t14\_d0.1\_2.txt & 0.01 & 
+$\times$
+ & 0.54 & 
+$\times$
+\\
+instance\_t14\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.18 & 
+$\times$
+\\
+instance\_t14\_d0.1\_4.txt & 0.02 & 
+$\times$
+ & 0.85 & 
+$\times$
+\\
+instance\_t14\_d0.1\_5.txt & 0.02 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t14\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t14\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t14\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 1.46 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t14\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.5 & 
+$\times$
+\\
+instance\_t14\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 0.07 & 
+$\times$
+\\
+instance\_t14\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 0.02 & 
+$\times$
+\\
+instance\_t14\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t14\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.01 & 
+$\times$
+\\
+instance\_t14\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.81 & 
+$\times$
+\\
+instance\_t14\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 0.12 & 
+$\times$
+\\
+instance\_t14\_d0.3\_6.txt & 0.01 & 
+$\times$
+ & 0.1 & 
+$\times$
+\\
+instance\_t14\_d0.3\_7.txt & 0.02 & 
+$\times$
+ & 0.11 & 
+$\times$
+\\
+instance\_t14\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.09 & 
+$\times$
+\\
+instance\_t14\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.06 & 
+$\times$
+\\
+instance\_t16\_d0.1\_1.txt & 0.01 & 
+$\times$
+ & 0.32 & 
+$\times$
+\\
+instance\_t16\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 16.51 & 
+$\times$
+\\
+instance\_t16\_d0.1\_2.txt & 0.01 & 
+$\times$
+ & 5.01 & 
+$\times$
+\\
+instance\_t16\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 4.56 & 
+$\times$
+\\
+instance\_t16\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 0.03 & 
+$\times$
+\\
+instance\_t16\_d0.1\_5.txt & 0.02 & 
+$\times$
+ & 0.79 & 
+$\times$
+\\
+instance\_t16\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 5.2 & 
+$\times$
+\\
+instance\_t16\_d0.1\_7.txt & 0.02 & 
+$\times$
+ & 2.18 & 
+$\times$
+\\
+instance\_t16\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 0.52 & 
+$\times$
+\\
+instance\_t16\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.95 & 
+$\times$
+\\
+instance\_t16\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 0.14 & 
+$\times$
+\\
+instance\_t16\_d0.3\_10.txt & 0.02 & 
+$\times$
+ & 0.8 & 
+$\times$
+\\
+instance\_t16\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 0.65 & 
+$\times$
+\\
+instance\_t16\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 19.05 & 
+$\times$
+\\
+instance\_t16\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 0.47 & 
+$\times$
+\\
+instance\_t16\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 0.51 & 
+$\times$
+\\
+instance\_t16\_d0.3\_6.txt & 0.01 & 
+$\times$
+ & 0.22 & 
+$\times$
+\\
+instance\_t16\_d0.3\_7.txt & 0.02 & 
+$\times$
+ & 3.69 & 
+$\times$
+\\
+instance\_t16\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.76 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t16\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 0.46 & 
+$\times$
+\\
+instance\_t18\_d0.1\_1.txt & 0.03 & 
+$\times$
+ & 28.6 & 
+$\times$
+\\
+instance\_t18\_d0.1\_10.txt & 0.01 & 
+$\times$
+ & 26.29 & 
+$\times$
+\\
+instance\_t18\_d0.1\_2.txt & 0.03 & 
+$\times$
+ & 65.01 & 
+$\times$
+\\
+instance\_t18\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 47.19 & 
+$\times$
+\\
+instance\_t18\_d0.1\_4.txt & 0.01 & 
+$\times$
+ & 23.61 & 
+$\times$
+\\
+instance\_t18\_d0.1\_5.txt & 0.01 & 
+$\times$
+ & 25.76 & 
+$\times$
+\\
+instance\_t18\_d0.1\_6.txt & 0.02 & 
+$\times$
+ & 75.98 & 
+$\times$
+\\
+instance\_t18\_d0.1\_7.txt & 0.02 & 
+$\times$
+ & 23.94 & 
+$\times$
+\\
+instance\_t18\_d0.1\_8.txt & 0.01 & 
+$\times$
+ & 10.97 & 
+$\times$
+\\
+instance\_t18\_d0.1\_9.txt & 0.01 & 
+$\times$
+ & 1.75 & 
+$\times$
+\\
+instance\_t18\_d0.3\_1.txt & 0.01 & 
+$\times$
+ & 1.32 & 
+$\times$
+\\
+instance\_t18\_d0.3\_10.txt & 0.01 & 
+$\times$
+ & 1.57 & 
+$\times$
+\\
+instance\_t18\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 1.37 & 
+$\times$
+\\
+instance\_t18\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 1.23 & 
+$\times$
+\\
+instance\_t18\_d0.3\_4.txt & 0.01 & 
+$\times$
+ & 4.99 & 
+$\times$
+\\
+instance\_t18\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 8.53 & 
+$\times$
+\\
+instance\_t18\_d0.3\_6.txt & 0.02 & 
+$\times$
+ & 6.13 & 
+$\times$
+\\
+instance\_t18\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 3.01 & 
+$\times$
+\\
+instance\_t18\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 16.2 & 
+$\times$
+\\
+instance\_t18\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 5.54 & 
+$\times$
+\\
+instance\_t20\_d0.1\_1.txt & 0.03 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_10.txt & 0.02 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_2.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_3.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_4.txt & 0.03 & 
+$\times$
+ & 54.99 & 
+$\times$
+\\
+instance\_t20\_d0.1\_5.txt & 0.04 & 
+$\times$
+ & 100.02 & 
+\\
+instance\_t20\_d0.1\_6.txt & 0.04 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.1\_7.txt & 0.03 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.1\_8.txt & 0.03 & 
+$\times$
+ & 100.01 & 
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t20\_d0.1\_9.txt & 0.02 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.3\_1.txt & 0.02 & 
+$\times$
+ & 35.22 & 
+$\times$
+\\
+instance\_t20\_d0.3\_10.txt & 0.03 & 
+$\times$
+ & 22.02 & 
+$\times$
+\\
+instance\_t20\_d0.3\_2.txt & 0.01 & 
+$\times$
+ & 100.0 & 
+\\
+instance\_t20\_d0.3\_3.txt & 0.03 & 
+$\times$
+ & 8.42 & 
+$\times$
+\\
+instance\_t20\_d0.3\_4.txt & 0.02 & 
+$\times$
+ & 90.59 & 
+$\times$
+\\
+instance\_t20\_d0.3\_5.txt & 0.01 & 
+$\times$
+ & 37.48 & 
+$\times$
+\\
+instance\_t20\_d0.3\_6.txt & 0.02 & 
+$\times$
+ & 70.07 & 
+$\times$
+\\
+instance\_t20\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 100.01 & 
+\\
+instance\_t20\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 20.43 & 
+$\times$
+\\
+instance\_t20\_d0.3\_9.txt & 0.01 & 
+$\times$
+ & 12.38 & 
+$\times$
+\\
+instance\_t8\_d0.1\_1.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_10.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_4.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_5.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_7.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_8.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.1\_9.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_1.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_10.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_2.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_3.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_4.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_5.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_6.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_7.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+instance\_t8\_d0.3\_8.txt & 0.01 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4} 
+ \begin{tabular}{lrrrr}
+	\hline
+ & \multicolumn{2}{c}{\textbf{cplex}} & \multicolumn{2}{c}{\textbf{heuristique}}\\
+\textbf{Instance}  & \textbf{Temps (s)} & \textbf{Optimal ?}  & \textbf{Temps (s)} & \textbf{Optimal ?} \\\hline
+
+instance\_t8\_d0.3\_9.txt & 0.0 & 
+$\times$
+ & 0.0 & 
+$\times$
+\\
+\hline\end{tabular}
+\end{center}
+
+
+\end{document}
