@@ -24,6 +24,7 @@ function heuristicSolve(t::Array{Int64,2})
         displaySolution(t,y)
         return y
     else
+        ("There is no solution")
         return -1
     end
 end
@@ -50,9 +51,9 @@ function solverec(board::Array{Int64,2},y::Array{Int64,2} ,line :: Int64, col ::
 
     element = t[line,col]
     rep_inline_list = findall(x->x === element,t[line,:])
-    # rep_incol_list = findall(x->x === element, t[:,col])
+    rep_incol_list = findall(x->x === element, t[:,col])
 
-    if length(rep_inline_list) == 1
+    if ( (length(rep_inline_list) == 1) && (length(rep_incol_list) == 1) )
         #goes to next number in line or goes to first number of next line
         if (col + 1) > n
             return (solverec(t,y,(line + 1), 1))
@@ -61,37 +62,79 @@ function solverec(board::Array{Int64,2},y::Array{Int64,2} ,line :: Int64, col ::
         end
     end
 
-    for elem_col in rep_inline_list
-        # mark all the repeated elements in line and column excpet the one in [line,col]
-        # marks also at the solution binary matrix
-        mark_elements(t,y,line,elem_col,element)
+    if length(rep_inline_list)>1
+        for elem_col in rep_inline_list
+            # mark all the repeated elements in line and column excpet the one in [line,col]
+            # marks also at the solution binary matrix
+            mark_elements(t,y,line,elem_col,element)
 
-        #check the adjacency
-        adjacency_ok = check_adjacency(y)
+            #check the adjacency
+            adjacency_ok = check_adjacency(y)
 
-        #check connexity
-        connexity_ok = is_connected(y)
+            #check connexity
+            connexity_ok = is_connected(y)
 
-        if( (adjacency_ok == true) && (connexity_ok == true) )
-            #goes to next number in line or goes to first number of next line
-            if (col+1)>n
-                is_good_solution = solverec(t,y,linha + 1,1)
+            if( (adjacency_ok == true) && (connexity_ok == true) )
+                #goes to next number in line or goes to first number of next line
+                if (col+1)>n
+                    is_good_solution = solverec(t,y,line + 1,1)
+                else
+                    is_good_solution = solverec(t,y,line,col+1)
+                end
+                
+                if (is_good_solution == false)
+                    restore_elements(board,t,y,line,elem_col,element)
+                end
+
+                if(is_good_solution==true)
+                    return true
+                end
+
             else
-                is_good_solution = solverec(t,y,line,col+1)
-            end
-            
-            if (is_good_solution == false)
                 restore_elements(board,t,y,line,elem_col,element)
             end
 
-            if(is_good_solution==true)
-                return true
+        end
+    end
+
+
+    if length(rep_incol_list)>1
+        for elem_line in rep_incol_list
+            # mark all the repeated elements in line and column excpet the one in [line,col]
+            # marks also at the solution binary matrix
+            mark_elements(t,y,elem_line,col,element)
+
+            #check the adjacency
+            adjacency_ok = check_adjacency(y)
+
+            #check connexity
+            connexity_ok = is_connected(y)
+
+            #check repeated values
+            # repeated_values_ok = check_repeated_values(x,y)
+
+
+            if( (adjacency_ok == true) && (connexity_ok == true) )
+                #goes to next number in line or goes to first number of next line
+                if (col+1)>n
+                    is_good_solution = solverec(t,y,line + 1,1)
+                else
+                    is_good_solution = solverec(t,y,line,col+1)
+                end
+                
+                if (is_good_solution == false)
+                    restore_elements(board,t,y,elem_line,col,element)
+                end
+
+                if(is_good_solution==true)
+                    return true
+                end
+
+            else
+                restore_elements(board,t,y,elem_line,col,element)
             end
 
-        else
-            restore_elements(board,t,y,line,elem_col,element)
         end
-
     end
 
     return false
